@@ -1,170 +1,161 @@
 # 🎵 Songs Mashup Generator
 
-Songs Mashup Generator is a locally running Streamlit application that creates a custom music mashup using multiple songs from a selected singer. The app fetches audio from YouTube, processes and merges tracks, packages the result, and can send the final mashup directly to your email.
+A fully local Streamlit application that fetches popular tracks of a chosen artist from YouTube, stitches them into a single mashup, and sends the final result straight to your email.  
+This project showcases how multiple technologies can work together, including:
 
-This project is built to demonstrate the practical use of:
-- Interactive web interfaces  
-- Audio processing with Python  
-- YouTube media extraction  
-- Automated email delivery  
-- Fully local deployment workflow  
+- Web-based UI development  
+- Audio processing pipelines  
+- Online media extraction  
+- Email automation  
+- Local-first deployment setup  
 
 ---
 
-## 🚀 Key Features
+## 🚀 What This App Can Do
 
-- 🔍 Search songs using a singer’s name  
-- 🎚 Choose how many tracks to include (supports large collections)  
-- ⏱ Set custom duration per song or use full-length tracks  
-- 🎧 Automatic mashup creation  
-- 📦 Export output as MP3 and ZIP  
-- 📩 Send mashup to email automatically  
-- 💾 Download files directly from the app  
-- 🖥 Runs completely on your local machine  
+- 🎤 Look up songs using a singer’s name  
+- 🎶 Choose how many tracks to include (even large batches)  
+- ⏱ Pick a custom clip duration per song or use full tracks  
+- 🎧 Generate a mashup automatically  
+- 📦 Bundle results into a ZIP file  
+- 📧 Send the mashup directly via email  
+- 💾 Download files manually from the interface  
+- 🖥 Run everything locally without cloud limitations  
 
 ---
 
 ## 🛠 Technology Stack
 
-| Component | Technology |
-|----------|------------|
-| Frontend / UI | Streamlit |
+| Part | Tool |
+|------|------|
+| UI / Frontend | Streamlit |
 | YouTube Downloader | yt-dlp |
-| Audio Processing | pydub |
+| Audio Editing | pydub |
+| Email Sending | SMTP (Gmail App Password) |
 | Audio Engine | FFmpeg |
-| Email Service | SMTP (Gmail App Password) |
 
 ---
 
-## 🖼 Screenshots / Demo
+## 🖼 Demo Preview
 
-> 📌 Paste your screenshots here
+**Screenshot 2026-02-14 130558**
 
-Example:
-- `![Home Screen](screenshots/home.png)`
-- `![Mashup Output](screenshots/output.png)`
-- `![Email Sent](screenshots/email.png)`
+The interface comes with a clean dark theme and includes:
 
-(Replace these with your own screenshots)
+- Field for singer name  
+- Slider to control number of songs  
+- Option for custom duration or full track  
+- Output file naming  
+- Email sending option  
+- Live audio preview  
+- Download + email confirmation  
 
 ---
 
-## 📂 Project Structure
+## 📂 Folder Layout
 
 songs_mashup/
 │
-├── app.py # Streamlit interface + email handling
-├── mashup.py # YouTube download + audio merge logic
+├── app.py # Streamlit interface + email sending
+├── mashup.py # Downloading + audio merging logic
 ├── requirements.txt # Python dependencies
-└── README.md # Project documentation
+└── README.md # Documentation
 
 
 ---
 
-## ⚙️ Installation & Setup (Local)
+## ⚙️ Setup Guide (Run Locally)
 
-### 1️⃣ Clone the Repository
+### 1️⃣ Get the Code
 
 ```bash
 git clone https://github.com/AnshulKaushal27/songs_mashup.git
 cd songs_mashup
-2️⃣ Install Python Dependencies
+
 pip install -r requirements.txt
+
 3️⃣ Install FFmpeg
-FFmpeg is required for audio conversion and merging.
+
+This project needs FFmpeg for audio extraction and merging.
 
 Windows
 
 Download from: https://www.gyan.dev/ffmpeg/builds/
 
-Download “Release Full”
+Grab the Release Full build
 
-Extract the files
+Extract it
 
-Add the bin folder to your system PATH
+Add the bin folder to your PATH
 
-Verify installation:
+Check installation:
+4️⃣ Set Up Gmail App Password
 
-ffmpeg -version
-macOS
-
-brew install ffmpeg
-Linux
-
-sudo apt update
-sudo apt install ffmpeg
-4️⃣ Configure Gmail App Password
-This project uses Gmail SMTP to send the mashup ZIP file.
+The app uses Gmail SMTP to send the ZIP file.
 
 Steps:
 
-Enable 2-Step Verification in your Google account
+Turn on 2-Step Verification in your Google account
 
-Generate an App Password
+Create an App Password:
 
 App → Mail
 
 Device → Windows Computer
 
-Copy the generated 16-character password
+Copy the 16-character password
 
-Update these values inside app.py:
+Update these in app.py:
 
 SENDER_EMAIL = "yourgmail@gmail.com"
 APP_PASSWORD = "your_generated_app_password"
-⚠️ Do NOT use your normal Gmail password.
 
-5️⃣ Run the Application
-python -m streamlit run app.py
-Open the local URL shown in the terminal.
+5️⃣ Start the App
+streamlit run app.py
 
-🔄 How the System Works
-User enters a singer’s name
+🔄 Behind the Scenes (How It Works)
+
+User types a singer’s name
 
 The app searches YouTube using yt-dlp
 
-Audio is downloaded and converted to MP3 using FFmpeg
+Audio is downloaded and converted to MP3 with FFmpeg
 
-Each track is trimmed (or kept full length)
+Selected parts are trimmed using pydub
 
-All clips are merged using pydub
+Clips are merged into one mashup
 
-Final output is created as:
+Output is exported as:
 
 .mp3
 
 .zip
 
-The ZIP file is:
+The ZIP is:
 
 Available for direct download
 
 Sent to the user via email
 
-🧠 Processing Pipeline
+PROCESSING PIPELINE "
 YouTube Search
-   → Audio Download
-      → MP3 Conversion
-         → Audio Trimming
-            → Track Merging
-               → Export File
-                  → ZIP Packaging
-                     → Email Delivery
+    → Audio Download
+    → MP3 Conversion
+    → Clip Trimming
+    → Merging
+    → Export
+    → ZIP Creation
+    → Email Delivery
 ⚠️ Deployment Notes
-This project is intended for local use only.
 
-Some cloud platforms may block YouTube downloads due to network or policy restrictions, such as:
+This project is intended only for local use.
 
-Render
+Some cloud platforms may restrict YouTube scraping due to IP or policy limitations.
+For demos, assignments, and learning, local execution is the safest option.
 
-Railway
+📈 Ideas for Future Upgrades
 
-Streamlit Cloud
-
-For reliable operation and demonstrations, local execution is recommended.
-
-📈 Possible Improvements
-Smooth crossfade between tracks
+Smooth crossfade transitions
 
 Audio loudness normalization
 
@@ -174,12 +165,13 @@ Background task processing
 
 Docker support
 
-Secure environment variable setup
+Safer config using environment variables
 
-Upload-based version for cloud deployment
+Upload-based version for cloud hosting
 
-🎓 Academic / Learning Purpose
-This project demonstrates real-world integration of:
+🎓 Educational Value
+
+This project demonstrates real-world usage of:
 
 Media data extraction
 
@@ -187,16 +179,21 @@ Audio signal processing
 
 Backend automation
 
-Email communication
+SMTP-based communication
 
-Interactive UI development
+Interactive UI building
 
-It can be expanded into a more advanced music processing system.
+It can serve as a base for a more advanced music processing system.
 
 📜 Disclaimer
-This project is created for educational and demonstration purposes only.
-Users are responsible for following YouTube’s terms of service and copyright regulations.
+
+This project is built for learning and demonstration only.
+Users are responsible for respecting YouTube’s terms of service and copyright rules.
+
+📧 Contributing
+
+If you have ideas, find bugs, or want to improve the project, feel free to open an issue or submit a pull request.
 
 📝 License
-This project is distributed under the MIT License.
 
+Released under the MIT License.
