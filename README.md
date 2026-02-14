@@ -13,7 +13,7 @@ This project showcases how multiple technologies can work together, including:
 
 ## 🚀 What This App Can Do
 
-- 🎤 Look up songs using a singer’s name  
+- 🎤 Look up songs using a singer's name  
 - 🎶 Choose how many tracks to include (even large batches)  
 - ⏱ Pick a custom clip duration per song or use full tracks  
 - 🎧 Generate a mashup automatically  
@@ -53,91 +53,100 @@ The interface comes with a clean dark theme and includes:
 ---
 
 ## 📂 Folder Layout
-
+```
 songs_mashup/
 │
-├── app.py # Streamlit interface + email sending
-├── mashup.py # Downloading + audio merging logic
-├── requirements.txt # Python dependencies
-└── README.md # Documentation
-
+├── app.py              # Streamlit interface + email sending
+├── mashup.py           # Downloading + audio merging logic
+├── requirements.txt    # Python dependencies
+└── README.md           # Documentation
+```
 
 ---
 
 ## ⚙️ Setup Guide (Run Locally)
 
 ### 1️⃣ Get the Code
-
 ```bash
 git clone https://github.com/AnshulKaushal27/songs_mashup.git
 cd songs_mashup
+```
 
+### 2️⃣ Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
-3️⃣ Install FFmpeg
+### 3️⃣ Install FFmpeg
 
 This project needs FFmpeg for audio extraction and merging.
 
-Windows
+**Windows**
 
-Download from: https://www.gyan.dev/ffmpeg/builds/
+- Download from: https://www.gyan.dev/ffmpeg/builds/
+- Grab the Release Full build
+- Extract it
+- Add the bin folder to your PATH
+- Check installation:
+```bash
+ffmpeg -version
+```
 
-Grab the Release Full build
+**macOS**
+```bash
+brew install ffmpeg
+```
 
-Extract it
+**Linux**
+```bash
+sudo apt update
+sudo apt install ffmpeg
+```
 
-Add the bin folder to your PATH
-
-Check installation:
-4️⃣ Set Up Gmail App Password
+### 4️⃣ Set Up Gmail App Password
 
 The app uses Gmail SMTP to send the ZIP file.
 
-Steps:
+**Steps:**
 
-Turn on 2-Step Verification in your Google account
-
-Create an App Password:
-
-App → Mail
-
-Device → Windows Computer
-
-Copy the 16-character password
-
-Update these in app.py:
-
+1. Turn on 2-Step Verification in your Google account
+2. Create an App Password:
+   - App → Mail
+   - Device → Windows Computer
+3. Copy the 16-character password
+4. Update these in `app.py`:
+```python
 SENDER_EMAIL = "yourgmail@gmail.com"
 APP_PASSWORD = "your_generated_app_password"
+```
 
-5️⃣ Start the App
+⚠ **Do NOT use your normal Gmail password.**
+
+### 5️⃣ Start the App
+```bash
 streamlit run app.py
+```
 
-🔄 Behind the Scenes (How It Works)
+Open the local URL shown in the terminal.
 
-User types a singer’s name
+---
 
-The app searches YouTube using yt-dlp
+## 🔄 Behind the Scenes (How It Works)
 
-Audio is downloaded and converted to MP3 with FFmpeg
+1. User types a singer's name
+2. The app searches YouTube using yt-dlp
+3. Audio is downloaded and converted to MP3 with FFmpeg
+4. Selected parts are trimmed using pydub
+5. Clips are merged into one mashup
+6. Output is exported as:
+   - .mp3
+   - .zip
+7. The ZIP is:
+   - Available for direct download
+   - Sent to the user via email
 
-Selected parts are trimmed using pydub
-
-Clips are merged into one mashup
-
-Output is exported as:
-
-.mp3
-
-.zip
-
-The ZIP is:
-
-Available for direct download
-
-Sent to the user via email
-
-PROCESSING PIPELINE "
+### Processing Pipeline
+```
 YouTube Search
     → Audio Download
     → MP3 Conversion
@@ -146,54 +155,58 @@ YouTube Search
     → Export
     → ZIP Creation
     → Email Delivery
-⚠️ Deployment Notes
+```
 
-This project is intended only for local use.
+---
 
-Some cloud platforms may restrict YouTube scraping due to IP or policy limitations.
+## ⚠️ Deployment Notes
+
+This project is intended **only for local use**.
+
+Some cloud platforms may restrict YouTube scraping due to IP or policy limitations.  
 For demos, assignments, and learning, local execution is the safest option.
 
-📈 Ideas for Future Upgrades
+---
 
-Smooth crossfade transitions
+## 📈 Ideas for Future Upgrades
 
-Audio loudness normalization
+- ☑ Smooth crossfade transitions
+- ☑ Audio loudness normalization
+- ☑ Beat matching
+- ☑ Background task processing
+- ☑ Docker support
+- ☑ Safer config using environment variables
+- ☑ Upload-based version for cloud hosting
 
-Beat matching
+---
 
-Background task processing
-
-Docker support
-
-Safer config using environment variables
-
-Upload-based version for cloud hosting
-
-🎓 Educational Value
+## 🎓 Educational Value
 
 This project demonstrates real-world usage of:
 
-Media data extraction
-
-Audio signal processing
-
-Backend automation
-
-SMTP-based communication
-
-Interactive UI building
+- Media data extraction
+- Audio signal processing
+- Backend automation
+- SMTP-based communication
+- Interactive UI building
 
 It can serve as a base for a more advanced music processing system.
 
-📜 Disclaimer
+---
 
-This project is built for learning and demonstration only.
-Users are responsible for respecting YouTube’s terms of service and copyright rules.
+## 📜 Disclaimer
 
-📧 Contributing
+This project is built for **learning and demonstration only**.  
+Users are responsible for respecting YouTube's terms of service and copyright rules.
+
+---
+
+## 📧 Contributing
 
 If you have ideas, find bugs, or want to improve the project, feel free to open an issue or submit a pull request.
 
-📝 License
+---
+
+## 📝 License
 
 Released under the MIT License.
