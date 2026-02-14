@@ -1,4 +1,4 @@
-# 🎵 Songs Mashup Generator
+<img width="911" height="899" alt="image" src="https://github.com/user-attachments/assets/90d7a2cc-f7ed-4398-8865-2b11acba48bf" /># 🎵 Songs Mashup Generator
 
 A fully local Streamlit application that fetches popular tracks of a chosen artist from YouTube, stitches them into a single mashup, and sends the final result straight to your email.  
 This project showcases how multiple technologies can work together, including:
@@ -38,7 +38,8 @@ This project showcases how multiple technologies can work together, including:
 
 ## 🖼 Demo Preview
 
-**Screenshot 2026-02-14 130558**
+<img width="911" height="899" alt="image" src="https://github.com/user-attachments/assets/9b495cb6-9ac1-4f51-a9d9-fe0571974cf5" />
+
 
 The interface comes with a clean dark theme and includes:
 
@@ -57,7 +58,6 @@ The interface comes with a clean dark theme and includes:
 songs_mashup/
 │
 ├── app.py              # Streamlit interface + email sending
-├── mashup.py           # Downloading + audio merging logic
 ├── requirements.txt    # Python dependencies
 └── README.md           # Documentation
 ```
@@ -92,16 +92,6 @@ This project needs FFmpeg for audio extraction and merging.
 ffmpeg -version
 ```
 
-**macOS**
-```bash
-brew install ffmpeg
-```
-
-**Linux**
-```bash
-sudo apt update
-sudo apt install ffmpeg
-```
 
 ### 4️⃣ Set Up Gmail App Password
 
