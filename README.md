@@ -1,4 +1,4 @@
-
+🎧Music Fusion Studio 
 A fully local Streamlit application that fetches popular tracks of a chosen artist from YouTube, stitches them into a single mashup, and sends the final result straight to your email.  
 This project showcases how multiple technologies can work together, including:
 
