@@ -35,11 +35,9 @@ This project showcases how multiple technologies can work together, including:
 | Audio Engine | FFmpeg |
 
 ---
-
 ## 🖼 Demo Preview
 
-<img width="911" height="899" alt="image" src="https://github.com/user-attachments/assets/9b495cb6-9ac1-4f51-a9d9-fe0571974cf5" />
-
+![Demo Preview](https://github.com/user-attachments/assets/9b495cb6-9ac1-4f51-a9d9-fe0571974cf5)
 
 The interface comes with a clean dark theme and includes:
 
