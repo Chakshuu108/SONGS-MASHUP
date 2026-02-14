@@ -1,4 +1,3 @@
-<img width="911" height="899" alt="image" src="https://github.com/user-attachments/assets/90d7a2cc-f7ed-4398-8865-2b11acba48bf" /># 🎵 Songs Mashup Generator
 
 A fully local Streamlit application that fetches popular tracks of a chosen artist from YouTube, stitches them into a single mashup, and sends the final result straight to your email.  
 This project showcases how multiple technologies can work together, including:
