@@ -11,8 +11,8 @@ import shutil
 # ========================= CONFIGURATION =========================
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 465
-SENDER_EMAIL = "parralexpie@gmail.com"
-EMAIL_APP_PASSWORD = "wkfp qytg woeu tpai"
+SENDER_EMAIL = st.secrets["SENDER_EMAIL"]
+APP_PASSWORD = st.secrets["APP_PASSWORD"]
 
 # ========================= CORE FUNCTIONS =========================
 
@@ -142,87 +142,114 @@ st.set_page_config(
 # Custom CSS for modern UI
 st.markdown("""
 <style>
+    /* App background */
     .main {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: radial-gradient(circle at top, #1a1a1a 0%, #0f0f0f 60%, #0b0b0b 100%);
         padding: 2rem;
     }
     
     .stApp {
         background: transparent;
     }
-    
+
+    /* Main card / form */
     div[data-testid="stForm"] {
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(20, 20, 20, 0.9);
         padding: 2.5rem;
         border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        border: 1px solid rgba(255,255,255,0.05);
+        backdrop-filter: blur(10px);
     }
-    
+
+    /* Title */
     h1 {
-        color: #ffffff;
+        color: #f5f5f5;
         text-align: center;
-        font-size: 3.5rem;
+        font-size: 3.2rem;
         font-weight: 800;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         margin-bottom: 0.5rem;
+        text-shadow: 0 0 20px rgba(120, 120, 255, 0.3);
     }
-    
+
     .subtitle {
-        color: #ffffff;
+        color: #b0b0b0;
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-bottom: 2rem;
-        opacity: 0.9;
     }
-    
-    .stTextInput > label, .stSlider > label, .stRadio > label {
-        color: #4a5568;
+
+    /* Labels */
+    .stTextInput > label, 
+    .stSlider > label, 
+    .stRadio > label {
+        color: #d0d0d0;
         font-weight: 600;
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
-    
+
+    /* Inputs */
+    input, textarea {
+        background-color: #111 !important;
+        color: #f0f0f0 !important;
+        border-radius: 12px !important;
+        border: 1px solid #2a2a2a !important;
+    }
+
+    /* Sliders */
+    .stSlider [role="slider"] {
+        background-color: #6b6bff !important;
+    }
+
+    /* Primary button */
     .stButton > button {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #5f5fff 0%, #8a5cff 100%);
         color: white;
         font-weight: 700;
-        font-size: 1.2rem;
-        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
         border-radius: 50px;
         border: none;
         width: 100%;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        transition: all 0.25s ease;
+        box-shadow: 0 0 20px rgba(120, 120, 255, 0.35);
     }
     
     .stButton > button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        box-shadow: 0 0 30px rgba(140, 140, 255, 0.6);
     }
-    
+
+    /* Download button */
     .stDownloadButton > button {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        color: white;
-        font-weight: 600;
+        background: linear-gradient(135deg, #2dd4bf 0%, #22c55e 100%);
+        color: #04110a;
+        font-weight: 700;
         border-radius: 50px;
         border: none;
         padding: 0.75rem 2rem;
         width: 100%;
+        box-shadow: 0 0 20px rgba(34,197,94,0.4);
     }
-    
+
+    /* Alerts */
     .stAlert {
-        border-radius: 10px;
+        border-radius: 12px;
         border-left: 5px solid;
+        background-color: #111 !important;
+        color: #e5e5e5 !important;
     }
-    
-    .feature-box {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 1rem 0;
-        color: white;
+
+    /* Audio player container tweak */
+    audio {
+        width: 100%;
+        margin-top: 0.5rem;
+        filter: invert(1) hue-rotate(180deg);
     }
+
 </style>
 """, unsafe_allow_html=True)
+
 
 # ========================= MAIN UI =========================
 
